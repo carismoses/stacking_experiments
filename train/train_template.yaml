@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: train-<ST>-<SA>-<MT>-<RUN>
+spec:
+  template:
+    spec:
+      containers:
+      - name: train-<ST>-<SA>-<MT>-<RUN>
+        image: <DOCKERID>/stacking-train:latest
+        command: ["bash", "train.sh"]
+        resources:
+          limits:
+            cpu: 5
+            memory: 20Gi
+            nvidia.com/gpu: 1
+          requests:
+            cpu: 5
+            memory: 20Gi
+            nvidia.com/gpu: 1
+        ports:
+        - containerPort: 6006
+        envFrom:
+        - configMapRef:
+            name: object-store
+        - configMapRef:
+            name: github-key
+        - secretRef:
+            name: github-key
+        - secretRef:
+            name: object-store
+        env:
+        - name: EXP
+          value: "<ST>-<SA>-<MT>-<RUN>"
+        - name: SAMPLER
+          value: "<SA>"
+        - name: STRATEGY
+          value: "<ST>"
+        - name: MODEL
+          value: "<MT>"
+        - name: NOISE
+          value: "<N>"
+      restartPolicy: Never
+  backoffLimit: 4
