@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: train-<ST>-<SA>-<MT>-<RUN>
-        image: <DOCKERID>/stacking-train:latest
+        image: <IMAGE>
         command: ["bash", "train.sh"]
         resources:
           limits:
@@ -40,5 +40,11 @@ spec:
           value: "<MT>"
         - name: NOISE
           value: "<N>"
+        - name: CSAIL_ENDPOINT
+          value: https://ceph.csail.mit.edu
+        - name: HONDA_ACCESS
+          value: 526add252055448fbf4b7bb711b822c7
+        - name: HONDA_SECRET
+          value: 84eaef04916848c1b061a5362f3d98ac
       restartPolicy: Never
   backoffLimit: 4

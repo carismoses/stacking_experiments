@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: eval-<EXP>-<P>
+  name: eval-<EXP>-<P>-<NBLOCKS>
 spec:
   template:
     spec:
@@ -34,5 +34,7 @@ spec:
           value: "<EXP>"
         - name: PROBLEM
           value: "<P>"
+        - name: NBLOCKS
+          value: "<NBLOCKS>"
       restartPolicy: Never
   backoffLimit: 4
