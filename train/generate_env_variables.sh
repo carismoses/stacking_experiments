@@ -1,10 +1,10 @@
 #!/bin/sh
 
-rm env_var_files/*
-sleep 3
+#rm env_var_files/*
+#sleep 3
 
 ############
-runs='2'
+runs='0'
 ############
 
 # sampling strategy comparisons
