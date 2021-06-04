@@ -24,4 +24,4 @@ python3.7 -m learning.experiments.active_train_towers \
                 --xy-noise 0.001
 
 # copy over results to minio
-/./mc cp -r learning/experiments/logs/ honda_cmm/stacking/paper_results_02232021/
+/./mc cp -r learning/experiments/logs/ honda_cmm/stacking/rss_camera_ready/

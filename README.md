@@ -13,6 +13,13 @@ To train with kubernetes:
     1. for active learning these will be in train/yaml_files run
 4. stop pod with: kubectl delete -f relevant_yaml_exp_file
 
+To train on Google Cloud VM
+1. spin up a VM using the command in create-vm (use a distinct INSTANCE_NAME)
+2. ssh into VM using command in gcp_setup
+3. in VM: git clone https://github.com/carismoses/stacking_experiments.git
+4. run with the relevant SPECIFIC_ENV_FILE.list: docker run --runtime nvidia --env-file stacking_experiments/train/env_var_files/SPECIFIC_ENV_FILE.list carismoses/stacking-train:latest
+5. To kill a VM instance: 
+
 To evaluate with kubernetes:
 1. cd into /evaluate
 2. generate kubernetes yaml files
