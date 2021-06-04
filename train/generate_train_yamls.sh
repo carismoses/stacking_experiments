@@ -50,6 +50,21 @@ do
   sed -i "" "s/<IMAGE>/${image}/g" $new_yaml
 done
 
+st='random'
+sa='random'
+model_type='fcgn'
+for r in $runs
+do
+  new_yaml=yaml_files/${st}-${sa}-${model_type}-${r}.yaml
+  cp train_template.yaml $new_yaml
+  sed -i "" "s/<ST>/${st}/g" $new_yaml
+  sed -i "" "s/<SA>/${sa}/g" $new_yaml
+  sed -i "" "s/<MT>/${model_type}/g" $new_yaml
+  sed -i "" "s/<RUN>/${r}/g" $new_yaml
+  sed -i "" "s/<N>/${noise}/g" $new_yaml
+  sed -i "" "s/<IMAGE>/${image}/g" $new_yaml
+done
+
 # architecture comparison
 strategy='subtower'
 sampler='sequential'
