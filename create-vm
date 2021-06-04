@@ -1,0 +1,16 @@
+#!/bin/bash
+
+export IMAGE_FAMILY="common-cu101"
+export MACHINE_TYPE="n1-standard-8"
+export ZONE="us-west1-b"
+export INSTANCE_NAME="cmoses-rss-gpu0"
+
+gcloud compute instances create $INSTANCE_NAME \
+    --image-family=$IMAGE_FAMILY \
+    --zone=$ZONE \
+    --machine-type=$MACHINE_TYPE \
+    --image-project=deeplearning-platform-release \
+    --maintenance-policy=TERMINATE \
+    --accelerator="type=nvidia-tesla-v100,count=1" \
+    --metadata="install-nvidia-driver=True" \
+    --verbosity="info"

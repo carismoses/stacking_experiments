@@ -1,0 +1,66 @@
+# TO CREATE A NEW GPU INSTANCE
+
+Change the name in the create-vm script then run the script.
+ssh via "gcloud compute ssh "instance-name" --zone "vm-zone"
+
+
+
+# TO SETUP ON GCP
+
+sudo apt-get install g++ g++-multilib 
+
+python3 -m pip install --upgrade pip setuptools
+python3 -m pip install wheel
+python3 -m pip install \
+  catkin_pkg \
+  dill \
+  empy \
+  IPython \
+  networkx \
+  numba \
+  numpy \
+  numpy-quaternion \
+  psutil \
+  pybullet \
+  pyquaternion \
+  recordclass \
+  rospy-message-converter \
+  scipy \
+  sklearn
+python3 -m pip install git+https://github.com/mike-n-7/tsr.git
+
+pip install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+
+# Set up PDDLStream
+mkdir external
+cd external \
+git clone https://github.com/caelan/pddlstream.git 
+cd pddlstream 
+git submodule update --init --recursive 
+./FastDownward/build.py
+
+# Set up stacking repo
+cd ~
+git clone https://github.com/Learning-and-Intelligent-Systems/stacking.git 
+cd stacking 
+python3 -m pip install --ignore-installed -r requirements.txt 
+
+# Set up pb_robot
+cd ~/external 
+git clone https://github.com/mike-n-7/pb_robot.git 
+cd pb_robot/src/pb_robot/ikfast/franka_panda 
+# Note: Might need to change pb_robot/src/pb_robot/ikfast/franka_panda/ikfast.h to reference Python3.7 instead of 3.6.
+python3 setup.py build 
+cd ~/external/pb_robot/src/pb_robot/models 
+touch CATKIN_IGNORE
+
+cd ~/stacking
+ln -s ~/external/pb_robot/src/pb_robot .
+ln -s ~/external/pddlstream/pddlstream .
+
+
+# TO RUN ON GCP
+
+Use tmux to make sure sessions don't die if you exit the ssh connection.
+Try to run 3-4 runs/instance to take advantage of the v100 GPUs.
+
