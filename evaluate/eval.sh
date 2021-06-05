@@ -10,7 +10,7 @@ ln -s /pb_robot/src/pb_robot .
 ln -s /pddlstream/pddlstream .
 
 # copy exp path into stacking
-/./mc cp -r honda_cmm/stacking/paper_results_02232021/${EXP}/ ${EXP}
+/./mc cp -r honda_cmm/stacking/rss_camera_ready/${EXP}/ ${EXP}
 
 # run evaluation code
 python3.7 -m learning.evaluate.plan_evaluate_models \
@@ -25,4 +25,4 @@ python3.7 -m learning.evaluate.plan_evaluate_models \
                     --exec-xy-noise 0.000
 
 # copy over results to minio
-/./mc cp -r ${EXP}/figures honda_cmm/stacking/paper_results_02232021/${EXP}
+/./mc cp -r ${EXP}/figures honda_cmm/stacking/camera_ready/${EXP}
