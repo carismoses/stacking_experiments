@@ -4,4 +4,4 @@ FROM carismoses/stacking:latest
 # run training
 COPY eval.sh .
 RUN chmod +x eval.sh
-CMD ./train.sh
+CMD ./eval.sh
