@@ -25,4 +25,4 @@ python3.7 -m learning.evaluate.plan_evaluate_models \
                     --exec-xy-noise 0.000
 
 # copy over results to minio
-/./mc cp -r ${EXP}/figures honda_cmm/stacking/camera_ready/${EXP}
+/./mc cp -r ${EXP}/figures honda_cmm/stacking/rss_camera_ready/${EXP}
