@@ -2,12 +2,15 @@
 ./mc config host add honda_cmm $CSAIL_ENDPOINT $HONDA_ACCESS $HONDA_SECRET
 
 # clone stacking repo
-git clone https://github.com/Learning-and-Intelligent-Systems/stacking.git
+git clone --single-branch --branch phaedra https://github.com/Learning-and-Intelligent-Systems/stacking.git
 
 # link other packages
 cd stacking
 ln -s /pb_robot/src/pb_robot .
 ln -s /pddlstream/pddlstream .
+
+# so can run on phaedra
+pip3 install torch==1.2.0 torchvision==0.4.0
 
 # run training code
 python3.7 -m learning.experiments.active_train_towers \
