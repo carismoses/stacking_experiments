@@ -7,8 +7,9 @@
 docker_id='carismoses'
 
 # acquisition strategies
-exp_paths='random-random-fcgn-2-20210604-195352
-random-random-fcgn-1-20210604-195044'
+exp_paths='random-random-fcgn-3-20210615-231130
+subtower-greedy-sequential-fcgn-3-20210615-230907
+bald-sequential-fcgn-3-20210615-231115'
 
 n_blocks='5'    
 problems='tallest min-contact overhang' # tallest min-contact, overhang

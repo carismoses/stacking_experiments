@@ -18,6 +18,8 @@ To train on Google Cloud VM
 2. ssh into VM using command in gcp_setup
 3. in VM: git clone https://github.com/carismoses/stacking_experiments.git
 4. run with the relevant SPECIFIC_ENV_FILE.list: docker run --runtime nvidia --env-file stacking_experiments/train/env_var_files/SPECIFIC_ENV_FILE.list carismoses/stacking-train:latest
+    other optional args: --env CUDA_VISIBLE_DEVICES=$DEVICE_NUM
+                         --name $NAME
 5. To kill a VM instance: 
 
 To evaluate with kubernetes:
