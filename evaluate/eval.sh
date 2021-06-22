@@ -9,6 +9,9 @@ cd stacking
 ln -s /pb_robot/src/pb_robot .
 ln -s /pddlstream/pddlstream .
 
+# so can run on phaedra
+pip3 install torch==1.2.0 torchvision==0.4.0
+
 # copy exp path into stacking
 /./mc cp -r honda_cmm/stacking/rss_camera_ready/${EXP}/ ${EXP}
 
